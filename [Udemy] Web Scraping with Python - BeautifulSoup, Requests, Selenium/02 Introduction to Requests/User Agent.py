@@ -1,5 +1,7 @@
 import requests
-from fake_useragent import UserAgent
+import fake_useragent
+
+print(fake_useragent.VERSION)
 
 #Background on User Agents
 

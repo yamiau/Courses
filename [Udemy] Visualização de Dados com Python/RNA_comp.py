@@ -2,8 +2,8 @@
 
 nucleotides = ["A", "T", "C", "G"]
 
-genome_in = open("bacteria.fasta").read()
-genome_out = open("bacteria.html", "w")
+genome_in = open("bacterium.fasta").read()
+genome_out = open("bacterium.html", "w")
 genome_in = genome_in.replace("\n", "")
 
 count = {}
