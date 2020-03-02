@@ -11,7 +11,7 @@ def median(values):
 		return(values[index])
 
 def median2(values, frequencies):
-	merged_set = [(values[i], frequencies[i]) for i in range(0, len(values))]
+	merged_set = [(values[i], frequencies[i]) for i in range(len(values))]
 	merged_set = quick_sort2(merged_set)
 	cumulative_freq =[]
 	for i in range(len(merged_set)):
@@ -24,16 +24,30 @@ def median2(values, frequencies):
 		if cumulative_freq[i] >= c:
 			return merged_set[i][0]
 	
-def mode(oneD):
-	copy = oneD
-	for i in oneD:
-		copy.append(i)
-		
-	return(None)
+def mode(values):
+	s = [[i, 0] for i in set(values)]
+	for i in s:
+		for j in values:
+			if i[0] == j:
+				i[1] += 1 
+	pivot = 0
+	greatest = s[0][1]
+	for i in range(len(s)):
+		if s[i][1] > greatest:
+			greatest = s[i][1]
+			pivot = i
+	return s[pivot][0]
+
+def mode2(values, frequencies):
+	pivot = 0
+	greatest = frequencies[pivot]
+	for i in range(len(frequencies)):
+		if frequencies[i] > greatest:
+			greatest = frequencies[i]
+			pivot = i
+	return values[pivot]
 	
-#Supporting methods
-	
-def quick_sort(values):
+def quick_sort(values):	
 	if values:
 		pivot = values[0]
 		smaller = [i for i in values[1:] if i < pivot]
@@ -55,4 +69,4 @@ def quick_sort2(values):
 values = [1, 6, 88, 10, 35]
 frequencies = [50, 26, 2, 31, 5]
 
-print(median2(values, frequencies))
+print(mode2(values, frequencies))
